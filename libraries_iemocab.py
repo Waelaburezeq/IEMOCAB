@@ -1,4 +1,3 @@
-### %run -i libraries.py
 ### storage libraries
 import boto3
 import os
