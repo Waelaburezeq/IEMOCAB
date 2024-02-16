@@ -1,9 +1,9 @@
-#%run -i libraries.py
-'''storage libraries'''
+### %run -i libraries.py
+### storage libraries
 import boto3
 import os
 import pickle
-'''processing libraries'''
+### processing libraries
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -18,18 +18,18 @@ import patoolib
 from IPython.display import display, Javascript
 import warnings
 warnings.filterwarnings('ignore')
-'''text libraries'''
+###text libraries
 import nltk
 nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from gensim.models import word2vec
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import re
-'''audio libraries'''
+###audio libraries 
 from scipy.io import wavfile
 import librosa.display
-#import scipy.io
-'''Model libraries'''
+###import scipy.io
+###Model libraries 
 import tensorflow as tf
 import tensorflow.keras as keras
 from tensorflow.keras import Sequential
