@@ -1,0 +1,10 @@
+boto3
+gensim
+varname
+tensorflow-addons  
+graphviz
+torchviz 
+patool
+lazypredict 
+scikit-learn
+flaml
