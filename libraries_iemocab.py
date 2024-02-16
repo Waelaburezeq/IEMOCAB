@@ -1,3 +1,4 @@
+from __future__ import print_function
 ###storage libraries
 import boto3
 import os
@@ -40,7 +41,6 @@ from keras.utils import plot_model
 from keras.regularizers import l2
 from keras.callbacks import LearningRateScheduler
 import keras.backend as K
-from __future__ import print_function
 import numpy as np
 import pandas as pd
 import torch
