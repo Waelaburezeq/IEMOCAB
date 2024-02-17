@@ -32,10 +32,8 @@ def export_file(obj,local_path,file_type,name_of_obj=False):
     print('file type is not supported')
   return None
 
-def upload_to_aws(local_file, bucket, path, s3_file):
+def upload_to_aws(local_file, bucket, path, s3_file,aws_access_key_id,aws_secret_access_key):
     from botocore.exceptions import NoCredentialsError
-    aws_access_key_id='AKIAQBQPEFCOPWXYEOWE'
-    aws_secret_access_key='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'
     service = 's3'
     s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id,aws_secret_access_key=aws_secret_access_key)
     try:
@@ -50,9 +48,7 @@ def upload_to_aws(local_file, bucket, path, s3_file):
         return False
     return msg
 
-def download_aws_s3_datasets(s3_bucket_n,file_n,parent_folder_name):
-  aws_access_key_id='AKIAQBQPEFCOPWXYEOWE'
-  aws_secret_access_key='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'
+def download_aws_s3_datasets(s3_bucket_n,file_n,parent_folder_name,aws_access_key_id,aws_secret_access_key):
   service = 's3'
   bucket_name=s3_bucket_n
   session = boto3.Session(aws_access_key_id=aws_access_key_id,aws_secret_access_key=aws_secret_access_key)
