@@ -1,4 +1,4 @@
-#from util import *
+#from helper_iemocab import *
 
 def func_args(obj:"FunctionName")->"This function returns all input args and thier annotation":
   return inspect.getfullargspec(load_files)
@@ -156,7 +156,7 @@ def scheduler(epoch):
 
 def callback_f(model_name):
   Callback =[
-    keras.callbacks.EarlyStopping(monitor ='val_loss',patience=8,verbose = 1,restore_best_weights=True),
+    keras.callbacks.EarlyStopping(monitor ='val_loss',patience=6,verbose = 1,restore_best_weights=True),
     keras.callbacks.ModelCheckpoint(filepath =local_path+model_name+'.hdf5', verbose = 1, save_best_only = True),
     LearningRateScheduler(scheduler)]
   return Callback
@@ -227,3 +227,14 @@ class save_spectrogram():
         print("no spectrogram was saved for file {}".format(unique_id))
     return None
 
+# PREPROCESS THE DATA Function - Input/text processing
+def preproc(df, colname):
+  df[colname] = df[colname].apply(clean_html)
+  df[colname] = df[colname].apply(remove_links)
+  df[colname] = df[colname].apply(func=non_ascii)
+  df[colname] = df[colname].apply(func=lower)
+  df[colname] = df[colname].apply(func=email_address)
+  # df[colname] = df[colname].apply(func=removeStopWords)
+  df[colname] = df[colname].apply(func=punct)
+  df[colname] = df[colname].apply(func=remove_)
+  return(df)
