@@ -4,7 +4,7 @@ numpy
 pandas 
 matplot
 seaborn
-librosa
+librosa==0.9.1
 tqdm
 setuptools
 #xlrd
