@@ -238,3 +238,22 @@ def preproc(df, colname):
   df[colname] = df[colname].apply(func=punct)
   df[colname] = df[colname].apply(func=remove_)
   return(df)
+
+
+def plot_distribution(actual, predicted, labels):
+  # Create a confusion matrix
+  cm = confusion_matrix(actual, predicted, labels=labels)
+
+  # Normalize confusion matrix to allow total of 100% distribution
+  cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
+  # Plot confusion matrix
+  plt.figure(figsize=(10, 8))
+  sns.heatmap(cm_normalized, annot=True, fmt=".0%", cmap="Blues", xticklabels=labels, yticklabels=labels)
+  plt.xlabel('Predicted')
+  plt.ylabel('Actual')
+  plt.title('Normalized Confusion Matrix')
+  plt.show()
+
+  # Print classification report
+  print(classification_report(actual, predicted, labels=labels))
