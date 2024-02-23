@@ -62,7 +62,7 @@ def download_aws_s3_datasets(s3_bucket_n,file_n,parent_folder_name,aws_access_ke
       for obj in my_bucket.objects.all(): #tqdm displaty progress bar https://www.geeksforgeeks.org/python-how-to-make-a-terminal-progress-bar-using-tqdm/
         path, filename = os.path.split(obj.key)
         parent_folder =  obj.key.split('/')[0]
-        print(obj)
+        #print(obj)
         #if path == ''
         if filename.lower()==file_n.lower() and parent_folder.lower() == parent_folder_name.lower():
           msg = print(f'Downloading file {filename} from {path}')
