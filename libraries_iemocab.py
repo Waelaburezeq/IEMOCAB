@@ -1,7 +1,7 @@
 #%run -i libraries.py
 from __future__ import print_function
 #storage libraries
-import boto3 as boto3
+#import boto3 as boto3
 import os as os
 import pickle as pickle
 #processing libraries
