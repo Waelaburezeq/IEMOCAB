@@ -65,7 +65,7 @@ def download_aws_s3_datasets(s3_bucket_n,file_n,parent_folder_name,aws_access_ke
         #print(obj)
         #if path == ''
         if filename.lower()==file_n.lower() and parent_folder.lower() == parent_folder_name.lower():
-          msg = print(f'Downloading file {filename} from {path}')
+          #msg = print(f'Downloading file {filename} from {path}')
           #print(obj)
           if os.path.isdir(path) == True:
             msg = print(f'Downloading file {filename} from {path}')
