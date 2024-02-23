@@ -7,15 +7,19 @@ import librosa
 import matplotlib.pyplot as plt
 import tensorflow
 import tensorflow.keras as keras
-from keras.callbacks import LearningRateScheduler
+
 import seaborn as sns
+import keras
+import inspect
+
 from sklearn.metrics import confusion_matrix, classification_report
+from keras.callbacks import LearningRateScheduler
 
 def func_args(obj:"FunctionName")->"This function returns all input args and thier annotation":
   return inspect.getfullargspec(load_files)
 
-def execute_cell_by_index(index):
-    display(Javascript(f'IPython.notebook.execute_cells([{index}])'))
+#def execute_cell_by_index(index):
+#    display(Javascript(f'IPython.notebook.execute_cells([{index}])'))
 
 def export_file(obj,local_path,file_type,name_of_obj=False):
   #file_name = 'train_labels_one_hot.txt'
