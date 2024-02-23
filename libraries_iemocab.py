@@ -1,9 +1,9 @@
 #%run -i libraries.py
 from __future__ import print_function
 #storage libraries
-import boto3
-import os
-import pickle
+import boto3 as boto3
+import os as os
+import pickle as pickle
 #processing libraries
 import matplotlib.pyplot as plt
 import numpy as np
