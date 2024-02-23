@@ -2,8 +2,15 @@
 import boto3
 import os
 import numpy as np
+import pickle
+import librosa
+import matplotlib.pyplot as plt
+import tensorflow
+import tensorflow.keras as keras
+from keras.callbacks import LearningRateScheduler
+import seaborn as sns
+from sklearn.metrics import confusion_matrix, classification_report
 
-print(boto3.__version__, np.__version__)
 def func_args(obj:"FunctionName")->"This function returns all input args and thier annotation":
   return inspect.getfullargspec(load_files)
 
