@@ -47,6 +47,8 @@ from sklearn.metrics import accuracy_score
 from keras.utils import plot_model
 from keras.regularizers import l2
 from keras.callbacks import LearningRateScheduler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 import keras.backend as K
 import torch
 import torch.nn.functional as F
