@@ -176,7 +176,7 @@ def callback_f(model_name):
     LearningRateScheduler(scheduler)]
   return Callback
 
-def get_f1(y_true, y_pred): #taken from old keras source code
+'''def get_f1(y_true, y_pred): #taken from old keras source code
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
     predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
@@ -184,6 +184,7 @@ def get_f1(y_true, y_pred): #taken from old keras source code
     recall = true_positives / (possible_positives + K.epsilon())
     f1_val = 2*(precision*recall)/(precision+recall+K.epsilon())
     return f1_val
+'''
 
 def f1(): #https://www.tensorflow.org/addons/api_docs/python/tfa/metrics/F1Score
   return tfa.metrics.F1Score(HP.n_classes, threshold=0.5)
