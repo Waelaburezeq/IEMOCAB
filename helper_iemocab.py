@@ -3,7 +3,7 @@ import boto3
 import os
 import numpy as np
 
-print(boto3.__version__, np.))version__)
+print(boto3.__version__, np.__version__)
 def func_args(obj:"FunctionName")->"This function returns all input args and thier annotation":
   return inspect.getfullargspec(load_files)
 
