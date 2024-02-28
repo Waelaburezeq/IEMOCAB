@@ -16,7 +16,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 from keras.callbacks import LearningRateScheduler
 
 def func_args(obj:"FunctionName")->"This function returns all input args and thier annotation":
-  return inspect.getfullargspec(load_files)
+  return inspect.getfullargspec(obj)
 
 #def execute_cell_by_index(index):
 #    display(Javascript(f'IPython.notebook.execute_cells([{index}])'))
@@ -169,7 +169,7 @@ def scheduler(epoch):
     else:
         return 0.001 * 0.1**(epoch//10)
 
-def callback_f(model_name):
+def callback_f(local_path:"local path",model_name:"model name"):
   Callback =[
     keras.callbacks.EarlyStopping(monitor ='val_loss',patience=6,verbose = 1,restore_best_weights=True),
     keras.callbacks.ModelCheckpoint(filepath =local_path+model_name+'.hdf5', verbose = 1, save_best_only = True),
