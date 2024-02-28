@@ -189,7 +189,7 @@ def callback_f(local_path:"local path",model_name:"model name"):
 def f1(): #https://www.tensorflow.org/addons/api_docs/python/tfa/metrics/F1Score
   return tfa.metrics.F1Score(HP.n_classes, threshold=0.5)
 
-def accuracy_dict(history_model_name,name_of_obj):
+def accuracy_dict(history_model_name,name_of_obj,accuracy_dictionary):
   last_v =[]
   #for k in history_text_model_lstm_embedding.history.keys():
   #    last_v.append([k,history_text_model_lstm_embedding.history[k][-1]])
