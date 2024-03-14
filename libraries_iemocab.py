@@ -34,7 +34,7 @@ import librosa.display
 import tensorflow as tf
 import tensorflow.keras as keras
 from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Dense, Embedding, Dropout, LSTM,Input
+from tensorflow.keras.layers import Dense, Embedding, Dropout, LSTM,Input, Bidirectional
 from tensorflow.keras.optimizers.legacy import Adam #decay was depreciated from recent adam optimizer
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.initializers import TruncatedNormal
