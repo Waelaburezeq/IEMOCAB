@@ -7,6 +7,17 @@ from retry import retry #https://pypi.org/project/retry/
 #@retry(wait=wait_exponential(multiplier=2, min=2, max=30),  stop=stop_after_attempt(5))
 
 def calc_col_weighted_avg(measure_v, measure_c):
+  """
+  Calculates the param_n weighted average
+
+  Paramters:
+    measure_v: A series of the measure values
+    measure_c: A series of the measure # of records
+
+  Returnes:
+    float: the calculated weighted average of the column
+
+  """
   #print(len(measure_v))
   #print(type(measure_v))
   #print(measure_v)
@@ -35,10 +46,21 @@ def df_summary(df):
   return retruned_df, dict_param_values
 
 def calc_overall_weighted_avg(dict_param_weights,dict_param_values):
+  """
+  Calculate the overall index weighted average
+
+  Parameters:
+    dict_param_weights: A set of predefined weights for each param_n, in a dictionary format
+    dict_param_values: A set of calculated weighted average for each parameter generated from df_summary() function
+
+  Returns:
+    flot: the overall TAMM Quality Index weighted average
+
+  """
   return sum(dict_param_weights[k]*dict_param_values[k] for k in dict_param_weights)
 
 @retry(tries=3)
-def simulate_adge(df,adge_n,param_n,score_v):
+def simulate_adge(df, adge_n, param_n, score_v):
     """
     Simulate changes based on a given condition.
 
@@ -52,16 +74,20 @@ def simulate_adge(df,adge_n,param_n,score_v):
         DataFrame: A copy of the original DataFrame with simulated changes.
         str: The weighted average of the 'param_n' column in the DataFrame, formatted to two decimal places.
     """
-  
-  df_simulated =  df.copy(deep=True)
-  #print(df_simulated[""+param_n+""])
-  #df_simulated[""+param_n+""] = 0
-  #print(df_simulated)
-  try:
-    #df_simulated[""+param_n+""] = np.where(df_simulated['ADGE']==adge_n,score_v,df_simulated[""+param_n+""])
-    df_simulated[param_n] = np.where(df_simulated['ADGE']==adge_n,score_v,df_simulated[param_n])
-  except:
-     print(param_n + " doesn't exist")
-  param_n_records = param_n.replace(param_n[len(param_n) - 5:], "records")
-  #print(param_n_test)
-  return df_simulated,format(calc_col_weighted_avg(df_simulated[param_n],df_simulated[param_n_records]),".2f")
+
+    df_simulated = df.copy(deep=True)
+    # print(df_simulated[""+param_n+""])
+    # df_simulated[""+param_n+""] = 0
+    try:
+        # df_simulated[""+param_n+""] = np.where(df_simulated['ADGE']==adge_n,score_v,df_simulated[""+param_n+""])
+        df_simulated[param_n] = np.where(
+            df_simulated["ADGE"] == adge_n, score_v, df_simulated[param_n]
+        )
+    except:
+        print(param_n + " doesn't exist")
+    param_n_records = param_n.replace(param_n[len(param_n) - 5 :], "records")
+    # print(param_n_test)
+    return df_simulated, format(
+        calc_col_weighted_avg(df_simulated[param_n], df_simulated[param_n_records]),
+        ".2f",
+    )
