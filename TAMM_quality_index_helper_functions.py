@@ -39,6 +39,20 @@ def calc_overall_weighted_avg(dict_param_weights,dict_param_values):
 
 @retry(tries=3)
 def simulate_adge(df,adge_n,param_n,score_v):
+    """
+    Simulate changes based on a given condition.
+
+    Parameters:
+        df (DataFrame): The DataFrame containing the data.
+        adge_n (str): The name of 'ADGE' to update the selected parameter.
+        param_n (str): The name of the column to update based on the new score_v.
+        score_v (int or float): The value to assign to 'param_n' for the selected adge.
+
+    Returns:
+        DataFrame: A copy of the original DataFrame with simulated changes.
+        str: The weighted average of the 'param_n' column in the DataFrame, formatted to two decimal places.
+    """
+  
   df_simulated =  df.copy(deep=True)
   #print(df_simulated[""+param_n+""])
   #df_simulated[""+param_n+""] = 0
