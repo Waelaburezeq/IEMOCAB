@@ -37,7 +37,6 @@ def df_summary(df):
         df (DataFrame): The DataFrame to be summarized.
 
     Returns:
-        DataFrame: A DataFrame summarizing the weighted averages for columns containing '_score'.
         dict: A dictionary containing column names as keys and their corresponding weighted averages as values.
   """
 
@@ -98,7 +97,8 @@ def simulate_adge(df, adge_n, param_n, score_v):
         print(param_n + " doesn't exist")
     param_n_records = param_n.replace(param_n[len(param_n) - 5 :], "records")
     # print(param_n_test)
-    return df_simulated, format(
+    updated_weighted_avg = format(
         calc_col_weighted_avg(df_simulated[param_n], df_simulated[param_n_records]),
-        ".2f",
+        ".2f")
+    return df_simulated, updated_weighted_avg
     )
