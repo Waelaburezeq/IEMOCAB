@@ -52,9 +52,9 @@ def df_summary(df):
       #print(type(weighted_avg))
       df_wavg.append(weighted_avg)
       #print(f"Weighted average for {col}: {'%.2f' % weighted_avg}")
-  retruned_df = pd.DataFrame(zip(df_atr,df_wavg), columns= ["variable name","Weighted avg"])
+  #retruned_df = pd.DataFrame(zip(df_atr,df_wavg), columns= ["variable name","Weighted avg"])
   dict_param_values = {df_atr[i]: df_wavg[i] for i in range(len(df_atr))}
-  return retruned_df, dict_param_values
+  return dict_param_values #,retruned_df
 
 def calc_overall_weighted_avg(dict_param_weights,dict_param_values):
   """
