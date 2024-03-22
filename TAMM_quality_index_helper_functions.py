@@ -30,6 +30,17 @@ def calc_col_weighted_avg(measure_v, measure_c):
 
 @retry(ZeroDivisionError, tries=3, delay=2)
 def df_summary(df):
+  """
+    Summarize the DataFrame by calculating weighted averages for columns containing '_score'.
+
+    Parameters:
+        df (DataFrame): The DataFrame to be summarized.
+
+    Returns:
+        DataFrame: A DataFrame summarizing the weighted averages for columns containing '_score'.
+        dict: A dictionary containing column names as keys and their corresponding weighted averages as values.
+  """
+
   df_atr = []
   df_wavg = []
   for col in df:
