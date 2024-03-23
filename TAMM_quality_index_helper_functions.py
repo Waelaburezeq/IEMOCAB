@@ -86,7 +86,7 @@ def calc_overall_weighted_avg(dict_param_weights,dict_param_values):
   """
   return sum(dict_param_weights[k]*dict_param_values[k] for k in dict_param_weights)
 
-@retry(tries=3)
+#@retry(tries=3)
 def simulate_adge(df, adge_n, param_n, score_v):
     """
     Simulate changes based on a given condition.
