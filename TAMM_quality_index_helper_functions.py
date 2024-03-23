@@ -110,12 +110,11 @@ def simulate_adge(df, adge_n, param_n, score_v):
         df_simulated[param_n] = np.where(
             df_simulated["ADGE"] == adge_n, score_v, df_simulated[param_n]
         )
-    except:
-        print(param_n + " doesn't exist")
+    except Exception as error:
+        print(type(error).__name__ , "-", error)
     param_n_records = param_n.replace(param_n[len(param_n) - 5 :], "records")
     # print(param_n_test)
     updated_weighted_avg = format(
         calc_col_weighted_avg(df_simulated[param_n], df_simulated[param_n_records]),
         ".2f")
     return df_simulated, updated_weighted_avg
-    )
