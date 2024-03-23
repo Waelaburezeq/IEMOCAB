@@ -6,6 +6,23 @@ from retry import retry #https://pypi.org/project/retry/
 #from tenacity import wait_exponential, retry, stop_after_attempt
 #@retry(wait=wait_exponential(multiplier=2, min=2, max=30),  stop=stop_after_attempt(5))
 
+def on_upload(file_name):
+  """
+  Return the uploaded excel sheet as dataframe after replacing all null values with zero
+
+  Parameters:
+    str: input file in excel format
+
+  Returns:
+    DataFrame: A dataframe after replacing all null values
+
+  """
+  data = pd.read_excel(file_name) #input data to be uploaded
+  #replace nulls
+  data = data.fillna(0)
+  return data
+
+
 def calc_col_weighted_avg(measure_v, measure_c):
   """
   Calculates the param_n weighted average
@@ -14,7 +31,7 @@ def calc_col_weighted_avg(measure_v, measure_c):
     measure_v: A series of the measure values
     measure_c: A series of the measure # of records
 
-  Returnes:
+  Returns:
     float: the calculated weighted average of the column
 
   """
@@ -64,7 +81,7 @@ def calc_overall_weighted_avg(dict_param_weights,dict_param_values):
     dict_param_values: A set of calculated weighted average for each parameter generated from df_summary() function
 
   Returns:
-    flot: the overall TAMM Quality Index weighted average
+    float: the overall TAMM Quality Index weighted average
 
   """
   return sum(dict_param_weights[k]*dict_param_values[k] for k in dict_param_weights)
